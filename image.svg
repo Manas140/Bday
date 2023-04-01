@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+  <style>
+    #rect {
+      fill: #121212;
+    }
+    #bg, #progress {
+      fill: none;
+      stroke: #8da3b91a;
+      stroke-width: 15;
+      stroke-linecap: round;
+      transition: all 1s ease;
+    } 
+    #progress {
+      stroke-dasharray: $C;
+      stroke-dashoffset: $C;
+      stroke: #8DA3B9;
+    }
+    #progress:hover {
+      stroke-dashoffset: $PCT;
+    }
+    #age {
+      font: bold italic 40px JetBrains Mono;
+      fill: #8DA3B9;
+      text-anchor: middle;
+    }
+  </style>
+  
+  <rect id='rect' x="0" y="0" width="100%" height="100%"/>
+
+  <circle id="bg" cx="50%" cy="50%" r="40%"/>
+  <circle id="progress" cx="50%" cy="50%" r="40%"/>
+
+  <text id='age' x="50%" y="55%">$AGE</text>
+</svg>

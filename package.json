@@ -1,0 +1,20 @@
+{
+  "name": "Bday",
+  "version": "0.0.1",
+  "description": "Birthday Info Card",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Manas140",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manas140/Bday.git"
+  },
+  "bugs": {
+    "url": "https://github.com/manas140/Bday/issues"
+  },
+  "homepage": "https://github.com/manas140/Bday#readme"
+}
