@@ -12,11 +12,8 @@
     } 
     #progress {
       stroke-dasharray: $C;
-      stroke-dashoffset: $C;
-      stroke: #8DA3B9;
-    }
-    #progress:hover {
       stroke-dashoffset: $PCT;
+      stroke: #8DA3B9;
     }
     #age {
       font: bold italic 40px JetBrains Mono;
