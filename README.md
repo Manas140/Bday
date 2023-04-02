@@ -12,9 +12,9 @@
 ![Birthday Stats](https://bday-manas140.vercel.app/{YYYY-MM-DD})
 ```
 
-- Example:
-  ![Birthday Stats](https://bday-manas140.vercel.app/2007-04-01)
+- E.g: `![Birthday Stats](https://bday-manas140.vercel.app/2007-04-01)`
 
+  ![Birthday Stats](https://bday-manas140.vercel.app/2007-04-01)
 
 ## Reference
 
