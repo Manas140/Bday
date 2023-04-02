@@ -1,4 +1,4 @@
-<h1 align="center">Bday</h1>
+<h1 align="center">Birthday Stats</h1>
 
 <p align="center">
   <a href="https://github.com/Manas140/Bday/stargazers"><img src="https://img.shields.io/github/stars/Manas140/Bday?colorA=151515&colorB=8C977D&style=for-the-badge&logo=starship"></a>
