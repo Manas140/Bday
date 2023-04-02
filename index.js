@@ -23,6 +23,7 @@ const server = http.createServer((req, res) => {
       const r = 40*3;
       const c = Math.PI*(r*2);
       let pct = 0; 
+      let desc = '';
 
       if (!(day.getDate() == today.getDate() && day.getMonth() == today.getMonth())) {
         day.setFullYear(today.getFullYear());
@@ -31,13 +32,17 @@ const server = http.createServer((req, res) => {
         }
         
         pct = ( (day-today)/(1000*60*60*24) ) / 365;
+        desc = `I'll turn ${age+1} in ${day.getFullYear()}`;
+      }
+      else {
+        desc = "It seems today is my birthday";
       }
 
-      const conf = [ ['$AGE', age], ['$C', c], ['$PCT', c*pct] ];
+      const conf = [ ['$Age', age], ['$C', c], ['$Pct', c*pct], ['$BDay', bday], ['$DaysUntilNext', Math.floor(pct*365)], ['$Desc', desc] ];
 
       for (let i = 0; i < conf.length; i++) {
         const data = conf[i];
-        svg = svg.replace(data[0], data[1])
+        svg = svg.replaceAll(data[0], data[1])
       }
       res.writeHead(200, {"Content-Type": "image/svg+xml"});  
       res.write(svg);  

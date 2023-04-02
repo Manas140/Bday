@@ -1,31 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300">
   <style>
     #rect {
       fill: #121212;
     }
     #bg, #progress {
       fill: none;
-      stroke: #8da3b91a;
       stroke-width: 15;
+      stroke: #8da3b91a;
       stroke-linecap: round;
-      transition: all 1s ease;
+      animation: progress 1.5s ease;
     } 
     #progress {
-      stroke-dasharray: $C;
-      stroke-dashoffset: $PCT;
+      transform-origin: 75% 50%;
+      transform: rotate(-90deg);
       stroke: #8DA3B9;
+      stroke-dasharray: $C;
+      stroke-dashoffset: $Pct;
     }
-    #age {
-      font: bold italic 40px JetBrains Mono;
+    
+    text {
+      font: bold 15px JetBrains Mono;
+      fill: #e8e3e3;
+      text-anchor: left;
+      animation: fadeIn 1.5s ease;
+    }
+     
+    #head, #age {
+      font-size: 25px;
       fill: #8DA3B9;
+    }
+
+    #age {
+      font-size: 40px;
       text-anchor: middle;
     }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: TranslateY(20px);
+      }
+      to  {
+        opacity: 1;
+        transform: TranslateY(0);
+      }
+    }
+
+    @keyframes progress {
+      from {
+        stroke-dashoffset: $C;
+      }
+      to {
+        stroke-dashoffset: $Pct;
+      }
+    }
   </style>
-  
-  <rect id='rect' x="0" y="0" width="100%" height="100%"/>
+  <rect id='rect' x="0" y="0" width="100%" height="100%" rx="10px" ry='10px'/>
+  <text id='head' x="10%" y="25%">Birthday Stats</text>
+  <g>
+    <text x="10%" y="45%">Birthday: $BDay</text>
+    <text x="10%" y="55%">Days Until Next: $DaysUntilNext</text>
+    <text x="10%" y="75%">$Desc</text>
+  </g>
+  <g>
+    <rect x="0" y="0" width="100%" height="100%" fill="#00000000"/>
 
-  <circle id="bg" cx="50%" cy="50%" r="40%"/>
-  <circle id="progress" cx="50%" cy="50%" r="40%"/>
+    <circle id="bg" cx="75%" cy="50%" r="20%"/>
+    <circle id="progress" cx="75%" cy="50%" r="20%"/>
 
-  <text id='age' x="50%" y="55%">$AGE</text>
+    <text id='age' x="75%" y="55%">$Age</text>
+  </g>
 </svg>
