@@ -19,3 +19,8 @@
 ## Reference
 
 - [github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
+- [tutorialspoint](https://github.com/anuraghazra/github-readme-stats) [ for zodiac sign from date function ]
+
+## Special Thanks 
+
+- [Harry](https://github.com/saimoomedits/)

@@ -1,73 +1,80 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="300">
   <style>
-    #rect {
+    @import url('https://fonts.googleapis.com/css2?family=K2D:wght@400');
+    rect {
       fill: #121212;
     }
-    #bg, #progress {
+    .bg, .progress {
       fill: none;
-      stroke-width: 15;
-      stroke: #8da3b91a;
+      stroke-width: 10;
+      stroke: #222222;
       stroke-linecap: round;
-      animation: progress 1.5s ease;
+      animation: progress 2s ease;
     } 
-    #progress {
-      transform-origin: 75% 50%;
-      transform: rotate(-90deg);
+    .progress {
       stroke: #8DA3B9;
-      stroke-dasharray: $C;
+      stroke-dasharray: $Ttl;
       stroke-dashoffset: $Pct;
     }
     
     text {
-      font: bold 15px JetBrains Mono;
+      opacity: 0;
+      font-weight: bold;
+      font-family: 'K2D';
       fill: #e8e3e3;
-      text-anchor: left;
-      animation: fadeIn 1.5s ease;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: calc(var(--order) * 200ms);
     }
      
-    #head, #age {
-      font-size: 25px;
-      fill: #8DA3B9;
+    .info {
+      font-size: 1em;
+      text-anchor: end;
     }
-
-    #age {
-      font-size: 40px;
+    .head {
+      font-size: 2em;
+    }
+    .age {
+      fill: #8DA3B9;
+      font-size: 7em;
+    }
+    .sign {
+      fill: #222222;
+      font-size: 16em;
       text-anchor: middle;
+      text-align: center;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: TranslateY(20px);
+        transform: TranslateX(-15px);
       }
       to  {
         opacity: 1;
-        transform: TranslateY(0);
+        transform: TranslateX(0);
       }
     }
 
     @keyframes progress {
       from {
-        stroke-dashoffset: $C;
+        stroke-dashoffset: $Ttl;
       }
       to {
         stroke-dashoffset: $Pct;
       }
     }
   </style>
-  <rect id='rect' x="0" y="0" width="100%" height="100%" rx="10px" ry='10px'/>
-  <text id='head' x="10%" y="25%">Birthday Stats</text>
-  <g>
-    <text x="10%" y="45%">Birthday: $BDay</text>
-    <text x="10%" y="55%">Days Until Next: $DaysUntilNext</text>
-    <text x="10%" y="75%">$Desc</text>
-  </g>
-  <g>
-    <rect x="0" y="0" width="100%" height="100%" fill="#00000000"/>
+  <rect x="0" y="0" width="100%" height="100%" rx="10px" ry='10px'/>
+  <text class='head' x="10%" y="30%" style='--order: 1'>About My Birthday</text>
 
-    <circle id="bg" cx="75%" cy="50%" r="20%"/>
-    <circle id="progress" cx="75%" cy="50%" r="20%"/>
+  <text class='age' x="10%" y="70%" style='--order: 2'>$Age</text>
+  <text class='info' x="50%" y="50%" style='--order: 3'>$Name</text>
+  <text class='info' x="50%" y="60%" style='--order: 4'>$BDay</text>
+  <text class='info' x="50%" y="70%" style='--order: 5'>$DaysUntilNext</text>
 
-    <text id='age' x="75%" y="55%">$Age</text>
-  </g>
+  <text class='sign' x="75%" y="80%" style='--order: 6'>$Sign</text>
+
+  <line class='bg' x1='10%' x2='50%' y1='80%' y2='80%'/>
+  <line class='progress' x1='10%' x2='50%' y1='80%' y2='80%'/>
+
 </svg>
