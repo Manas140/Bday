@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
       const day = new Date(bday);
       const age = Math.floor((today-day)/31557600000);
 
-      let next = "It's my birthday";
+      let next = "Today";
       let pct = 0;
 
       // Bday Stats
@@ -31,7 +31,7 @@ const server = http.createServer((req, res) => {
         }
         
         pct = ( (day-today)/(1000*60*60*24) ) / 365;
-        next = `${Math.floor(pct*365)} days later`;
+        next = `In ${Math.floor(pct*365)} Days`;
       }
       const findSign = (date) => {
         const days = [21, 20, 21, 21, 22, 22, 23, 24, 24, 24, 23, 22];
@@ -50,13 +50,14 @@ const server = http.createServer((req, res) => {
       
       const conf = [ 
         ['$Age', age],
-        ['$Ttl', 4*60],
-        ['$Pct', pct*4*60],
+        ['$Ttl', 600],
+        ['$Pct', pct*600],
         ['$BDay', new Date(bday).toLocaleDateString('en-AU')],
         ['$DaysUntilNext', next],
         ['$Name', zodiac[0]],
         ['$Sign', zodiac[1]],
       ];
+      
       for (let i = 0; i < conf.length; i++) {
         const data = conf[i];
         svg = svg.replaceAll(data[0], data[1])

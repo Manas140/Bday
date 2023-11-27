@@ -9,17 +9,17 @@
 ## Usage
 
 ```
-![Birthday Stats](https://bday-manas140.vercel.app/{YYYY-MM-DD})
+![Birthday Stats](https://bday-stats.vercel.app/{YYYY-MM-DD})
 ```
 
-- E.g: `![Birthday Stats](https://bday-manas140.vercel.app/2007-04-01)`
+- E.g: `![Birthday Stats](https://bday-stats.vercel.app/2007-04-01)`
 
-  ![Birthday Stats](https://bday-manas140.vercel.app/2007-04-01)
+  ![Birthday Stats](https://bday-stats.vercel.app/2007-04-01)
 
 ## Reference
 
 - [github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
-- [tutorialspoint](https://github.com/anuraghazra/github-readme-stats) [ for zodiac sign from date function ]
+- [tutorialspoint](https://www.tutorialspoint.com/finding-astrological-signs-based-on-birthdates-using-javascript) [ for zodiac sign from date function ]
 
 ## Special Thanks 
 
