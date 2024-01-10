@@ -4,7 +4,7 @@
   "description": "Birthday Info Card",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "bun index.js"
   },
   "keywords": [],
   "author": "Manas140",
