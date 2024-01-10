@@ -4,7 +4,8 @@
   "description": "Birthday Info Card",
   "main": "index.js",
   "scripts": {
-    "start": "bun index.js"
+    "start": "bun index.js",
+    "build": "bun-vercel index.js"
   },
   "keywords": [],
   "author": "Manas140",
@@ -18,6 +19,6 @@
   },
   "homepage": "https://github.com/manas140/Bday",
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-vercel": "^1.0.0-alpha.4"
   }
 }
