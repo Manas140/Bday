@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/manas140/Bday/issues"
   },
-  "homepage": "https://github.com/manas140/Bday#readme"
+  "homepage": "https://github.com/manas140/Bday",
+  "devDependencies": {
+    "bun-types": "latest"
+  }
 }

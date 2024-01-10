@@ -9,12 +9,24 @@
 ## Usage
 
 ```
-![Birthday Stats](https://bday-stats.vercel.app/{YYYY-MM-DD})
+![Birthday Stats](https://bday-stats.vercel.app?bday={YYYY-MM-DD})
 ```
 
-- E.g: `![Birthday Stats](https://bday-stats.vercel.app/2007-04-01)`
+- E.g. `![Birthday Stats](https://bday-stats.vercel.app?bday=2007-04-01)`
 
-  ![Birthday Stats](https://bday-stats.vercel.app/2007-04-01)
+  ![Birthday Stats](https://bday-stats.vercel.app?bday=2007-04-01)
+
+## Customization Options
+
+| Name | Description | Type | Default value |
+| --- | --- | --- | --- |
+| `fg` | Foreground Color. | string (hex color) | `a8a3a3` |
+| `bg` | Background Color. | string (hex color) | `121212` |
+
+- E.g. `![Birthday Stats](https://bday-stats.vercel.app?bday=2007-04-01&fg=ffffff&bg=000000)`
+
+  ![Birthday Stats](https://bday-stats.vercel.app?bday=2007-04-01&fg=ffffff&bg=000000)
+
 
 ## Reference
 

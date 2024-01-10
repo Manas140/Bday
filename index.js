@@ -1,52 +1,49 @@
-const http = require("http");
-const path = require('path');
-const fs = require("fs");
+import { serve, file as _file } from 'bun';
 
-const port = 8080;
+serve({
+  port: 3000,
+  async fetch(req) {
+    const url = new URL(req.url);
+    const file = _file(`./image.svg`);
 
-const server = http.createServer((req, res) => {
-  const file = path.join(process.cwd(), 'image.svg');
-
-  fs.readFile(file, function (err, svg) {
-    if (err) {
-      throw err; 
-    }
-
-    svg = svg.toString();
-    const bday = req.url.split('/')[1];
-
-    if (Date.parse(bday)) {
+    let svg = await file.text();
+    const queryBday = url.searchParams.get('bday');
+    const bg = url.searchParams.get('bg') || '121212';
+    const fg = url.searchParams.get('fg') || 'a8a3a3';
+    
+    if (Date.parse(queryBday)) {
       const today = new Date();
-      const day = new Date(bday);
-      const age = Math.floor((today-day)/31557600000);
+      const bday = new Date(queryBday);
+      const age = Math.floor((today-bday)/31557600000);
 
       let next = "Today";
       let pct = 0;
 
       // Bday Stats
-      if (!(day.getDate() == today.getDate() && day.getMonth() == today.getMonth())) {
-        day.setFullYear(today.getFullYear());
-        if (today > day) {
-          day.setFullYear(today.getFullYear() + 1); 
+      if (!(bday.getDate() == today.getDate() && bday.getMonth() == today.getMonth())) {
+        bday.setFullYear(today.getFullYear());
+        if (today > bday) {
+          bday.setFullYear(today.getFullYear() + 1); 
         }
         
-        pct = ( (day-today)/(1000*60*60*24) ) / 365;
+        pct = ( (bday-today)/(1000*60*60*24) ) / 365;
         next = `In ${Math.floor(pct*365)} Days`;
       }
-      const findSign = (date) => {
+
+      const get_zodiac = (date) => {
         const days = [21, 20, 21, 21, 22, 22, 23, 24, 24, 24, 23, 22];
         const signs = ["♒︎", "♓︎", "♈︎", "♉︎", "♊︎", "♋︎", "♌︎", "♍︎", "♎︎", "♏︎", "♐︎", "♑︎"];
         const names = ["Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"];
         let month = date.getMonth();
-        const day = date.getDate();
-        if (month == 0 && day <= 20){
+        const bday = date.getDate();
+        if (month == 0 && bday <= 20){
           month = 11;
-        } else if(day < days[month]){
+        } else if(bday < days[month]){
           month--;
         }
         return [ names[month], signs[month] ];
       };
-      const zodiac = findSign(day);
+      const zodiac = get_zodiac(bday)
       
       const conf = [ 
         ['$Age', age],
@@ -56,6 +53,8 @@ const server = http.createServer((req, res) => {
         ['$DaysUntilNext', next],
         ['$Name', zodiac[0]],
         ['$Sign', zodiac[1]],
+        ['$Bg', bg],
+        ['$Fg', fg],
       ];
       
       for (let i = 0; i < conf.length; i++) {
@@ -63,18 +62,10 @@ const server = http.createServer((req, res) => {
         svg = svg.replaceAll(data[0], data[1])
       }
 
-      res.writeHead(200, {"Content-Type": "image/svg+xml"});  
-      res.write(svg);  
+      return new Response(svg, {headers: {"Content-Type": "image/svg+xml"}, status: 200});  
     }
     else {
-      res.writeHead(200, {"Content-Type": "text/plain"});  
-      res.write('Invalid Date Provided');  
+      return new Response('invalid date', {headers: {"Content-Type": "text/plain"}, status: 200});  
     }
-
-    res.end();
-  })
-})
-
-server.listen(port, "127.0.0.1", () => {
-  console.log(`active on 127.0.0.1:${port}`)
+  }
 })

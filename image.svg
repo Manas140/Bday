@@ -7,61 +7,54 @@
     }
 
     rect {
-      fill: #121212;
+      fill: #$Bg;
     }
     
     .bg, .progress {
       fill: none;
       stroke-width: 2%;
-      stroke: #a8a3a340;
+      stroke: #$Fg40;
       stroke-linecap: round;
       animation: progress 2s ease;
     } 
+
     .progress {
-      stroke: #a8a3a3;
+      stroke: #$Fg;
       stroke-dasharray: $Ttl;
       stroke-dashoffset: $Pct;
     }
     
     text {
       opacity: 0;
+      fill: #$Fgcc;
       font-weight: bold;
       font-family: K2D;
-      fill: #e8e3e3;
       animation: fadeIn 1s ease forwards;
       animation-delay: calc(var(--order) * 200ms);
+      text-align: center;
+      text-anchor: middle;
     }
 
     .date {
-      fill: #a8a3a3cc;
-      text-align: center;
-      text-anchor: middle;
       font-size: 1em;
     }
+
     .info {
-      fill: #a8a3a3cc;
       font-size: .9em;
-      text-align: center;
-      text-anchor: middle;
     }
 
     .age {
-      fill: #a8a3a3;
-      text-align: center;
-      text-anchor: middle;
+      fill: #$Fg;
       font-size: 8em;
     }
+
     .sign {
-      fill: #a8a3a3;
+      fill: #$Fg;
       font-size: 5em;
-      text-anchor: middle;
-      text-align: center;
     }
 
     .emoji {
       font-size: 4em;
-      text-anchor: middle;
-      text-align: center;
     }
 
     @keyframes fadeIn {
